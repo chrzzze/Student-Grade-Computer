@@ -28,7 +28,7 @@ public class Student {
             }
 
             for (int i = 0; i < subs.length) {
-                
+
             }
             reader.close();
         } catch (IOException e) {
