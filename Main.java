@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
        
         File subjectstxt = new File("data//subjects.txt");
-        DataManagement.write(subjectstxt.getPath(),  "test test ahhhhhh"); //testing lang toh, the file is DataManagement.java
+//        DataManagement.write(subjectstxt.getPath(),  "test test ahhhhhh"); //testing lang toh, the file is DataManagement.java
 
         String contents = DataManagement.read(subjectstxt.getPath());
         System.out.println(contents);
