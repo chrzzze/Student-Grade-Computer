@@ -1,37 +1,73 @@
-import java.io.*;
 import java.util.Scanner;
-
 
 public class Main {
     public static void main(String[] args) {
+        UserManager userManager = new UserManager("data/accounts.txt");
+        SubjectManager subjectManager = new SubjectManager("data/subjects.txt");
+        GradeManager gradeManager = new GradeManager("data/grades.txt");
 
-        boolean loggedIn = false;
-        Account currentUser = null;
-        while (loggedIn == false){
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("Enter username: ");
-            String usernameInput = scanner.nextLine();
-            System.out.print("Enter password: ");
-            String passwordInput = scanner.nextLine();
+        Scanner scanner = new Scanner(System.in);
 
-            currentUser = AdminLogin.authenticate(usernameInput, passwordInput);
-            if (currentUser == null) {
-                System.out.println("Failed to log in.");
-            } else {
-                System.out.println("Logged in as: " + currentUser.username);
-                loggedIn = true;
-            } //log in
+        System.out.println("\n===== Login =====");
+        System.out.print("Username: ");
+        String username = scanner.nextLine();
+
+        System.out.print("Password: ");
+        String password = scanner.nextLine();
+
+        User user = userManager.authenticate(username, password);
+
+        if (user == null) {
+            System.out.println("Login failed. Exiting.");
+            return;
         }
 
-        if (currentUser.type.equals(Account.AccountType.ADMIN)) { //admin functions
-            System.out.println("You're an admin babey.");
+        System.out.println("\nWelcome, " + username + "!");
 
-
-        } else { //teacher functions
-            System.out.println("Teacher mode.");
+        if (user.getRole().equals("admin")) {
+            adminMenu(userManager, subjectManager, scanner);
+        } else if (user.getRole().equals("teacher")) {
+            teacherMenu(subjectManager, gradeManager, scanner);
         }
+    }
 
-       
+    static void adminMenu(UserManager userManager, SubjectManager subjectManager, Scanner scanner) {
+        while (true) {
+            System.out.println("\n=== Admin Menu ===");
+            System.out.println("1. Add User");
+            System.out.println("2. Add Subject");
+            System.out.println("3. Exit");
 
+            System.out.print("Choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1 -> userManager.addUser(scanner);
+                case 2 -> subjectManager.addSubject(scanner);
+                case 3 -> {
+                    return;
+                }
+            }
+        }
+    }
+
+    static void teacherMenu(SubjectManager subjectManager, GradeManager gradeManager, Scanner scanner) {
+        while (true) {
+            System.out.println("\n=== Teacher Menu ===");
+            System.out.println("1. Enter Grade");
+            System.out.println("2. Exit");
+
+            System.out.print("Choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1 -> gradeManager.enterGrade(scanner, subjectManager);
+                case 2 -> {
+                    return;
+                }
+            }
+        }
     }
 }
