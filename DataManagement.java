@@ -16,7 +16,7 @@ public class DataManagement {
         } 
     }
 
-    static String read (String target) {
+    static ArrayList<String> read (String target) {
 
         String result;
         ArrayList<String> text = new ArrayList<String>();
@@ -28,14 +28,14 @@ public class DataManagement {
              text.add(line);
         }
 
-        result = text.toString();
+
             
         } catch (IOException e) {
             System.out.println("Can't read."); //u fucked up
-            result = null;
+            text = null;
         }
-
+        return text;
         
-        return result;
+
     }
 }

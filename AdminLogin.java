@@ -1,15 +1,27 @@
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class AdminLogin {
     // Admin credentials
     static Account authenticate (String username,String password) {
         ArrayList<Account> accounts = new ArrayList<Account>();
-        String accountlist = DataManagement.read(Config.accounts.getPath());
-        Account match = null;
+        ArrayList<String> accountlist = DataManagement.read(Config.accounts.getPath());
+        for (int i = 0; i < accountlist.size(); i = i+3) {
+            accounts.add(new Account(accountlist.get(i), accountlist.get(i+1), accountlist.get(i+2)));
+        }
+        Account loggedOnUser = null;
+        for (Account account : accounts) {
+            if (Objects.equals(username, account.username)) {
+                if (Objects.equals(password, account.password)) {
+                    loggedOnUser = account;
+                    System.out.println(loggedOnUser.username);
+                    break;
+                }
+            }
+        }
 
-
-        return match;
+        return loggedOnUser;
     }
 //    private static final String ADMIN_USERNAME = "teacher";
 //    private static final String ADMIN_PASSWORD = "STICA";

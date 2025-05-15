@@ -3,9 +3,9 @@ public class Account {
     String username, password;
     AccountType type;
 
-    public Account(String username, String password, AccountType type) {
+    public Account(String type, String username, String password) {
+        this.type = AccountType.valueOf(type);
         this.username = username;
         this.password = password;
-        this.type = type;
     }
 }

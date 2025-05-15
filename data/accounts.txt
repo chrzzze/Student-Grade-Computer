@@ -1,4 +1,12 @@
-{
+ADMIN
 admin
 admin123
-}
+TEACHER
+reddgab
+password
+TEACHER
+doesnt
+work
+ADMIN
+gonna
+kill
