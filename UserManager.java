@@ -29,7 +29,7 @@ public class UserManager {
         return (u != null && u.checkPassword(password)) ? u : null;
     }
 
-    // ADMIN - "ADD USER" CHOICE
+    // 1ADMIN - "ADD USER" CHOICE
     public void addUser(Scanner sc) {
         System.out.print("Enter new username: ");
         String u = sc.nextLine();

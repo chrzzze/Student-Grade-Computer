@@ -35,7 +35,7 @@ public class Main {
     static void adminMenu(UserManager userManager, SubjectManager subjectManager, Scanner scanner) {
         while (true) {
 
-            // ADMIN MENU
+            // 1ADMIN MENU
             System.out.println("\n=== Admin Menu ===");
             System.out.println("1. Add User");
             System.out.println("2. Add Subject");
