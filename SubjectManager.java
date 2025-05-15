@@ -36,5 +36,5 @@ public class SubjectManager {
 
     public List<String> getSubjects() {
         return subjects;
-    }
+    } //subject variable
 }

@@ -1,15 +1,2 @@
-ADMIN
-admin
-admin123
-
-TEACHER
-reddgab
-password
-
-TEACHER
-izzie
-passwordreal
-
-ADMIN
-dm_noizpusher
-BOOB5D
+izzie, secret, admin
+redd, divaaa, teacher

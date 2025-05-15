@@ -4,7 +4,7 @@ import java.util.Objects;
 public class AdminLogin {
     // Admin credentials
     static Account authenticate (String username,String password) {
-        ArrayList<Account> accounts = new ArrayList<Account>(); // all the accounts
+        ArrayList<Account> accounts = new ArrayList<>(); // all the accounts
 
         ArrayList<String> accountlist = DataManagement.read(Data.accounts.getPath()); //the raw text file, in lines
         for (int i = 0; i < accountlist.size(); i = i+4) {
@@ -21,5 +21,6 @@ public class AdminLogin {
         }
 
         return loggedOnUser;
+
     }
 }
