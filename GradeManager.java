@@ -22,6 +22,7 @@ public class GradeManager {
         double total = 0;
         int count = 0;
 
+
         for (String subj : subjects) {
             System.out.print("Enter grade for " + subj + ": ");
             double grade = sc.nextDouble();
