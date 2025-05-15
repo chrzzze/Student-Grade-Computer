@@ -3,6 +3,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class DataManagement {
     static void write (String target, String content) {
@@ -17,20 +18,23 @@ public class DataManagement {
 
     static String read (String target) {
 
-
-        String result = "";
+        String result;
+        ArrayList<String> text = new ArrayList<String>();
         try (BufferedReader reader = new BufferedReader(new FileReader(target))) { //open reader
 
         String line;
         while ((line = reader.readLine()) != null) { //store each line into variable line
-             System.out.println(line); //para lang makita kung ano laman ni line
-             result = result + ", " + line; //append each line into result with a comma
-             
+//             System.out.println(line); //para lang makita kung ano laman ni line
+             text.add(line);
         }
+
+        result = text.toString();
             
         } catch (IOException e) {
             System.out.println("Can't read."); //u fucked up
-        } 
+            result = null;
+        }
+
         
         return result;
     }
