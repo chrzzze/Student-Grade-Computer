@@ -5,12 +5,13 @@ import java.util.Scanner;
 public class AdminLogin {
     // Admin credentials
     static Account authenticate (String username,String password) {
-        ArrayList<Account> accounts = new ArrayList<Account>();
-        ArrayList<String> accountlist = DataManagement.read(Config.accounts.getPath());
+        ArrayList<Account> accounts = new ArrayList<Account>(); // all the accounts
+
+        ArrayList<String> accountlist = DataManagement.read(Config.accounts.getPath()); //the raw text file, in lines
         for (int i = 0; i < accountlist.size(); i = i+3) {
-            accounts.add(new Account(accountlist.get(i), accountlist.get(i+1), accountlist.get(i+2)));
+            accounts.add(new Account(accountlist.get(i), accountlist.get(i+1), accountlist.get(i+2))); //make a new account for every group of 3 lines with the type, username, and password respectfully
         }
-        Account loggedOnUser = null;
+        Account loggedOnUser = null; //if its null there's no match
         for (Account account : accounts) {
             if (Objects.equals(username, account.username)) {
                 if (Objects.equals(password, account.password)) {
@@ -23,29 +24,4 @@ public class AdminLogin {
 
         return loggedOnUser;
     }
-//    private static final String ADMIN_USERNAME = "teacher";
-//    private static final String ADMIN_PASSWORD = "STICA";
-//
-//    public static void main(String[] args) {
-//        Scanner scanner = new Scanner(System.in);
-//
-//        System.out.print("Enter username: ");
-//        String inputUsername = scanner.nextLine();
-//
-//        System.out.print("Enter password: ");
-//        String inputPassword = scanner.nextLine();
-//
-//        if (authenticate(inputUsername, inputPassword)) {
-//            System.out.println("Login successful. Welcome, Admin!");
-//            // Admin functionality
-//        } else {
-//            System.out.println("Login failed. Incorrect username or password.");
-//        }
-//
-//        scanner.close();
-//    }
-
-//    private static boolean authenticate(String username, String password) {
-//        return ADMIN_USERNAME.equals(username) && ADMIN_PASSWORD.equals(password);
-//    }
 }
