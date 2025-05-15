@@ -8,6 +8,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
+        // LOGIN MENU
         System.out.println("\n===== Login =====");
         System.out.print("Username: ");
         String username = scanner.nextLine();
@@ -33,6 +34,8 @@ public class Main {
 
     static void adminMenu(UserManager userManager, SubjectManager subjectManager, Scanner scanner) {
         while (true) {
+
+            // ADMIN MENU
             System.out.println("\n=== Admin Menu ===");
             System.out.println("1. Add User");
             System.out.println("2. Add Subject");
@@ -54,6 +57,8 @@ public class Main {
 
     static void teacherMenu(SubjectManager subjectManager, GradeManager gradeManager, Scanner scanner) {
         while (true) {
+
+            // TEACHER MENU
             System.out.println("\n=== Teacher Menu ===");
             System.out.println("1. Enter Grade");
             System.out.println("2. Exit");

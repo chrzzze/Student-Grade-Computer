@@ -21,6 +21,7 @@ public class SubjectManager {
         }
     }
 
+    // ADMIN - "ADD SUBJECT" CHOICE
     public void addSubject(Scanner sc) {
         System.out.print("Enter subject name: ");
         String subject = sc.nextLine();
