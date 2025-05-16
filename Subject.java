@@ -1,6 +1,6 @@
 public class Subject {
     private String name;
-
+    double grade;
     public Subject(String name) {
         this.name = name;
     }

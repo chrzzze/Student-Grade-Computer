@@ -23,9 +23,19 @@ public class GradeManager {
         int count = 0;
 
         for (String subj : subjects) {
-            System.out.print("Enter grade for " + subj + ": ");
-            double grade = sc.nextDouble();
-            sc.nextLine();
+            double grade = 0.00;
+            while (true) {
+                System.out.print("Enter grade for " + subj + ": ");
+                grade = sc.nextDouble();
+                sc.nextLine();
+                if (grade > 100.00 || grade < 0.00) {
+                    System.out.println("Invalid grade. Please enter a number from 0 - 100.");
+                } else {
+                    break;
+                }
+            }
+
+
 
             String status = grade >= 75 ? "Pass" : "Fail";
             total += grade;

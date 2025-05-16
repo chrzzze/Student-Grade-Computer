@@ -1,0 +1,9 @@
+h, Mathematics in Modern World, 34.0, Fail
+h, Computer Programming 2, 555.0, Pass
+h, Systems Administration and Maintenance, 34.0, Fail
+h, Art Appreciation, 90.0, Pass
+h, Ethics, 92.0, Pass
+h, Science, Technology, and Society, 94.0, Pass
+h, National Service Training Program 2, 96.0, Pass
+h, Discrete Structures 1 (Discrete Mathematics), 99.0, Pass
+h, Physical Education, 98.0, Pass

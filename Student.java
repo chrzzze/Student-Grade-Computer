@@ -1,9 +1,18 @@
-public class Student {
-    private String name;
+import java.util.ArrayList;
 
-    public Student(String name) {
-        this.name = name;
+public class Student {
+    private String lastName;
+    private String firstName;
+
+    ArrayList<Subject> subjects = new ArrayList<>();
+
+    public Student(String lastName, String firstName) {
+        this.lastName = lastName;
+        this.firstName = firstName;
     }
 
-    public String getName() { return name; }
+    public String lastName() { return lastName; }
+    public String firstName() { return firstName; }
+    public String getName() {return lastName + ", " + firstName; }
+
 }
