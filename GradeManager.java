@@ -33,16 +33,24 @@ public class GradeManager {
                         break;
                     }
                     String[] data = studentFile.get(i).split("; "); //divide the line by the ;
-                    student.subjects.add(new Subject(data[0])); //first one's always the subject name
-                    student.subjects.get(f).grade = Double.parseDouble(data[1]); //and the second's the grade
+                    if (data.length > 1) { //assuming it's not empty
+                        student.subjects.add(new Subject(data[0])); //first one's always the subject name
+                        student.subjects.get(f).grade = Double.parseDouble(data[1]); //and the second's the grade
+                    }
                     if (displayGrades) { //if displaying grades
-                        System.out.print(student.subjects.get(f).getName() + ": "); //print em out like this
-                        System.out.print(student.subjects.get(f).grade);
-                        if (student.subjects.get(f).grade < 75) { //output if failed or passed also
-                            System.out.println(" (FAILED)");
-                        } else {
-                            System.out.println(" (PASSED)");
+                        if (student.subjects.isEmpty()) { //kung walang laman
+                            System.out.println("No grades recorded.");
+                        } else { //otherwise i-print
+                            System.out.print(student.subjects.get(f).getName() + ": "); //print em out like this
+                            System.out.print(student.subjects.get(f).grade);
+                            if (student.subjects.get(f).grade < 75) { //output if failed or passed also
+                                System.out.println(" (FAILED)");
+                            } else {
+                                System.out.println(" (PASSED)");
+                            }
                         }
+
+
                     }
                     i++; //next line in general
                     f++; //next line in the datablock
@@ -61,20 +69,23 @@ public class GradeManager {
         ArrayList<String> storedGrades = new ArrayList<>();
 
         Student chosenStudent = null;
-
-        System.out.print("Enter student name (Lastname, Firstname): ");
-        String studentName = sc.nextLine();
+        String studentName = null;
 
 
-        for (int i = 0; i < students.size(); i++) {
-            if (Objects.equals(studentName, students.get(i).getName())) {
-                chosenStudent = students.get(i);
+        while (chosenStudent == null) {
+            System.out.print("Enter student name (Lastname, Firstname): ");
+            studentName = sc.nextLine();
+            for (Student student : students) {
+                if (Objects.equals(studentName, student.getName())) {
+                    chosenStudent = student;
+                }
+
+            }
+            if (chosenStudent == null) {
+                System.out.println("Couldn't find the student.");
             }
         }
 
-        if (chosenStudent == null) {
-            System.out.println("Couldn't find the student.");
-        }
 
         List<String> subjects = sm.getSubjects();
         if (subjects.isEmpty()) {
@@ -132,10 +143,10 @@ public class GradeManager {
             System.out.println("Yaaay written to file successfully.");
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("Something went wrong.");
         }
 
-
-        double gwa = total / count;
+        double gwa = total / count; //gwa kasi susyal si izzie
         System.out.printf("GWA for %s: %.2f (%s)%n", studentName, gwa, gwa >= 75 ? "Pass" : "Fail");
     }
 }

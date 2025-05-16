@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -48,6 +49,10 @@ public class Main {
                 case 3 -> {
                     return;
                 }
+                default -> {
+                    System.out.println("Invalid response");
+                    return;
+                }
             }
         }
     }
@@ -58,16 +63,23 @@ public class Main {
             System.out.println("1. Enter Grade");
             System.out.println("2. View Grades");
             System.out.println("3. Exit");
-
-            System.out.print("Choice: ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            int choice = 0;
+            try {
+                System.out.print("Choice: ");
+                choice = scanner.nextInt();
+                scanner.nextLine();
+            } catch (Exception e) {
+                System.out.println("Invalid response.");
+            }
 
             switch (choice) {
                 case 1 -> gradeManager.enterGrade(scanner, subjectManager);
                 case 2 -> gradeManager.initGrades(true);
                 case 3 -> {
                     return;
+                }
+                default -> {
+                    System.out.println("Invalid response.");
                 }
             }
         }

@@ -8,17 +8,32 @@ Science, Technology, and Society; 98.0
 National Service Training Program 2; 98.0
 Discrete Structures 1 (Discrete Mathematics); 8.0
 Physical Education; 98.0
-totally real; 98.0
 }
 
 Aranzaso, Cherizze {
-Mathematics in Modern World; 76.0
-Computer Programming 2; 76.0
-Systems Administration and Maintenance; 76.0
-Art Appreciation; 76.0
-Ethics; 76.0
+Mathematics in Modern World; 98.0
+Computer Programming 2; 86.0
+Systems Administration and Maintenance; 66.0
+Art Appreciation; 87.0
+Ethics; 34.0
 Science, Technology, and Society; 76.0
-National Service Training Program 2; 76.0
-Discrete Structures 1 (Discrete Mathematics); 76.0
-Physical Education; 76.0
+National Service Training Program 2; 87.0
+Discrete Structures 1 (Discrete Mathematics); 98.0
+Physical Education; 77.0
+}
+
+Amalia, Rusty {
+
+}
+
+Prellegera, Yves {
+Mathematics in Modern World; 98.0
+Computer Programming 2; 97.0
+Systems Administration and Maintenance; 56.0
+Art Appreciation; 45.0
+Ethics; 76.0
+Science, Technology, and Society; 34.0
+National Service Training Program 2; 54.0
+Discrete Structures 1 (Discrete Mathematics); 65.0
+Physical Education; 87.0
 }
