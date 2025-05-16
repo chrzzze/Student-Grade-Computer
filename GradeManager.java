@@ -1,8 +1,7 @@
-import java.io.*;
-import java.sql.SQLOutput;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class GradeManager {
     private String filePath;
@@ -11,49 +10,55 @@ public class GradeManager {
         this.filePath = filePath;
     }
 
-    public void enterGrade(Scanner sc, SubjectManager sm) {
-
     ArrayList<Student> students = new ArrayList<>();
-    ArrayList<String> storedGrades = new ArrayList<>();
     ArrayList<String> studentFile = DataManagement.read(Data.students.getPath());
-    for (int i = 0; i < studentFile.size(); i++) {
-        if (studentFile.get(i).contains(" {")) {
-            String[] str = studentFile.get(i).replace(" {", "").split(", ");
-            String lastName = str[0];
-            String firstName = str[1];
 
-            Student student = new Student(lastName, firstName);
-            i++;
+    public void initGrades() {
+        for (int i = 0; i < studentFile.size(); i++) {
+            if (studentFile.get(i).contains(" {")) {
+                String[] str = studentFile.get(i).replace(" {", "").split(", ");
+                String lastName = str[0];
+                String firstName = str[1];
 
-            System.out.println(student.getName() + ": ");
-            int f = 0;
-            while (true) {
-                if (studentFile.get(i).contains("}")) {
-                    break;
-                }
-                String[] data = studentFile.get(i).split(", ");
-                student.subjects.add(new Subject(data[0]));
-                student.subjects.get(f).grade = Double.parseDouble(data[1]);
-                System.out.print(student.subjects.get(f).getName() + ": ");
-                System.out.print(student.subjects.get(f).grade);
-                if (student.subjects.get(f).grade < 75) {
-                    System.out.println(" FAILED");
-                } else {
-                    System.out.println(" PASSED");
-                }
+                Student student = new Student(lastName, firstName);
                 i++;
-                f++;
 
+                System.out.println(student.getName() + ": ");
+                int f = 0;
+                while (true) {
+                    if (studentFile.get(i).contains("}")) {
+                        break;
+                    }
+                    String[] data = studentFile.get(i).split("; ");
+                    student.subjects.add(new Subject(data[0]));
+                    student.subjects.get(f).grade = Double.parseDouble(data[1]);
+                    System.out.print(student.subjects.get(f).getName() + ": ");
+                    System.out.print(student.subjects.get(f).grade);
+                    if (student.subjects.get(f).grade < 75) {
+                        System.out.println(" FAILED");
+                    } else {
+                        System.out.println(" PASSED");
+                    }
+                    i++;
+                    f++;
+
+
+                }
+                students.add(student);
 
             }
-            students.add(student);
-
         }
     }
+    public void enterGrade(Scanner sc, SubjectManager sm) {
 
-        System.out.print("Enter student name: (Lastname, Firstname");
-        String studentName = sc.nextLine();
+        initGrades();
+        ArrayList<String> storedGrades = new ArrayList<>();
+
         Student chosenStudent = null;
+
+        System.out.print("Enter student name (Lastname, Firstname): ");
+        String studentName = sc.nextLine();
+
 
         for (int i = 0; i < students.size(); i++) {
             if (Objects.equals(studentName, students.get(i).getName())) {
@@ -62,7 +67,7 @@ public class GradeManager {
         }
 
         if (chosenStudent == null) {
-            System.out.println("Couldn't find 'em. sorry.");
+            System.out.println("Couldn't find the student.");
         }
 
         List<String> subjects = sm.getSubjects();
@@ -75,7 +80,7 @@ public class GradeManager {
         int count = 0;
 
         for (String subj : subjects) {
-            double grade = 0.00;
+            double grade;
             while (true) {
                 System.out.print("Enter grade for " + subj + ": ");
                 grade = sc.nextDouble();
@@ -87,30 +92,43 @@ public class GradeManager {
                 }
             }
 
-
-
             String status = grade >= 75 ? "Pass" : "Fail";
             total += grade;
             count++;
 
-
             storedGrades.add(subj + "; " + grade);
-            System.out.println(storedGrades);
 
+        }
+        for (int i = 0; i < studentFile.size(); i++) {
+            if (studentFile.get(i).contains(chosenStudent.getName())) {
+                boolean terminated = false;
+                i++;
+                i++;
+                while (!terminated) {
+                    if (studentFile.get(i).contains("}")) {
+                       i--;
+                       terminated = true;
+                    }
+                    studentFile.remove(i);
+                }
+                for (int j = 0; j < storedGrades.size(); j++) {
+                    studentFile.add(i, storedGrades.get(j));
+                    i++;
+                }
 
-
-//            // WILL PRINT IF THE STUDENT PASSED OR FAILED THE SUBJECT
-//            System.out.println(subj + ": " + grade + " | " + status);
-//            System.out.println(" ");
-//
-//            // WILL SAVE THE FILE
-//            try (PrintWriter pw = new PrintWriter(new FileWriter(filePath, true))) {
-//                pw.println(studentName + ", " + subj + ", " + grade + ", " + status);
-//            } catch (IOException e) {
-//                System.out.println("Error saving grade.");
-//            }
+            }
         }
 
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(Data.students)))
+        {
+            for (String str : studentFile) {
+                writer.write(str);
+                writer.newLine();
+            }
+            System.out.println("Yaaay written to file successfully.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
         double gwa = total / count;

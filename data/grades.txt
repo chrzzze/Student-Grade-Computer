@@ -1,35 +1,15 @@
-h, Mathematics in Modern World, 34.0, Fail
-h, Computer Programming 2, 555.0, Pass
-h, Systems Administration and Maintenance, 34.0, Fail
-h, Art Appreciation, 90.0, Pass
-h, Ethics, 92.0, Pass
-h, Science, Technology, and Society, 94.0, Pass
-h, National Service Training Program 2, 96.0, Pass
-h, Discrete Structures 1 (Discrete Mathematics), 99.0, Pass
-h, Physical Education, 98.0, PassAranzaso, Mathematics in Modern World, 99.0, Pass
-Aranzaso, Computer Programming 2, 45.0, Fail
-Aranzaso, Systems Administration and Maintenance, 87.0, Pass
-Aranzaso, Art Appreciation, 89.0, Pass
-Aranzaso, Ethics, 65.0, Fail
-Aranzaso, Science, Technology, and Society, 89.0, Pass
-Aranzaso, National Service Training Program 2, 99.0, Pass
-Aranzaso, Discrete Structures 1 (Discrete Mathematics), 99.0, Pass
-Aranzaso, Physical Education, 90.0, Pass
-Gabrinao, Redd, Mathematics in Modern World, 43.0, Fail
-Gabrinao, Redd, Computer Programming 2, 58.0, Fail
-Gabrinao, Redd, Systems Administration and Maintenance, 99.0, Pass
-Gabrinao, Redd, Art Appreciation, 99.0, Pass
-Gabrinao, Redd, Ethics, 99.0, Pass
-Gabrinao, Redd, Science, Technology, and Society, 99.0, Pass
-Gabrinao, Redd, National Service Training Program 2, 99.0, Pass
-Gabrinao, Redd, Discrete Structures 1 (Discrete Mathematics), 99.0, Pass
-Gabrinao, Redd, Physical Education, 99.0, Pass
-Aranzaso, Cherizze, Mathematics in Modern World, 43.0, Fail
-Aranzaso, Cherizze, Computer Programming 2, 23.0, Fail
-Aranzaso, Cherizze, Systems Administration and Maintenance, 99.0, Pass
-Aranzaso, Cherizze, Art Appreciation, 99.0, Pass
-Aranzaso, Cherizze, Ethics, 100.0, Pass
-Aranzaso, Cherizze, Science, Technology, and Society, 19.0, Fail
-Aranzaso, Cherizze, National Service Training Program 2, 9.0, Fail
-Aranzaso, Cherizze, Discrete Structures 1 (Discrete Mathematics), 2.0, Fail
-Aranzaso, Cherizze, Physical Education, 3.0, Fail
+Gabrinao, Redd {
+Mathematics in Modern World, 90.0
+Systems Administration and Maintenance, 34.0
+}
+Aranzaso, Cherizze
+Mathematics in Modern World; 98.0
+Computer Programming 2; 98.0
+Systems Administration and Maintenance; 98.0
+Art Appreciation; 98.0
+Ethics; 98.0
+Science, Technology, and Society; 98.0
+National Service Training Program 2; 98.0
+Discrete Structures 1 (Discrete Mathematics); 98.0
+Physical Education; 98.0
+}

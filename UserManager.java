@@ -38,7 +38,7 @@ public class UserManager {
         String r = sc.nextLine();
 
         try (PrintWriter pw = new PrintWriter(new FileWriter(filePath, true))) {
-            pw.println(u + "," + p + "," + r);
+            pw.println(u + ", " + p + ", " + r);
             users.put(u, new User(u, p, r));
             System.out.println("User added.");
         } catch (IOException e) {
