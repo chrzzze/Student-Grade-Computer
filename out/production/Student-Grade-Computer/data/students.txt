@@ -2,3 +2,8 @@ Gabrinao, Redd {
 Mathematics in Modern World, 90.0
 Systems Administration and Maintenance, 34.0
 }
+
+Aranzaso, Cherizze {
+Ethics, 85.6
+Systems Administration and Maintenance, 90.0
+}

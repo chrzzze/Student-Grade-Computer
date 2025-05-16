@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class GradeViewer {
+    private static ArrayList<Student> students = new ArrayList<>();
     public static void main(String[] args) {
         view();
     }
@@ -16,7 +17,7 @@ public class GradeViewer {
                 String firstName = str[1];
 
                 Student student = new Student(lastName, firstName);
-
+                System.out.println(student.getName());
                 i++;
 
                 int f = 0;
@@ -34,14 +35,17 @@ public class GradeViewer {
                     } else {
                         System.out.print(" PASSED");
                     }
-                    System.out.println();
                     i++;
                     f++;
 
 
                 }
+                students.add(student);
+
             }
         }
+        System.out.println(students);
+
     }
 }
 
