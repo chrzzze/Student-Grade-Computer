@@ -18,7 +18,7 @@ public class Main {
         User user = userManager.authenticate(username, password);
 
         if (user == null) {
-            System.out.println("Login failed. Exiting.");
+            System.out.println("Invalid login. Exiting.");
             return;
         }
 
@@ -56,7 +56,8 @@ public class Main {
         while (true) {
             System.out.println("\n=== Teacher Menu ===");
             System.out.println("1. Enter Grade");
-            System.out.println("2. Exit");
+            System.out.println("2. View Grades");
+            System.out.println("3. Exit");
 
             System.out.print("Choice: ");
             int choice = scanner.nextInt();
@@ -64,7 +65,8 @@ public class Main {
 
             switch (choice) {
                 case 1 -> gradeManager.enterGrade(scanner, subjectManager);
-                case 2 -> {
+                case 2 -> gradeManager.initGrades(true);
+                case 3 -> {
                     return;
                 }
             }

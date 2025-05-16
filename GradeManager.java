@@ -11,47 +11,53 @@ public class GradeManager {
     }
 
     ArrayList<Student> students = new ArrayList<>();
-    ArrayList<String> studentFile = DataManagement.read(Data.students.getPath());
+    ArrayList<String> studentFile = DataManagement.read(Data.students.getPath()); //student file
 
-    public void initGrades() {
-        for (int i = 0; i < studentFile.size(); i++) {
-            if (studentFile.get(i).contains(" {")) {
-                String[] str = studentFile.get(i).replace(" {", "").split(", ");
+    public void initGrades(boolean displayGrades) {
+        students.clear(); //refresh
+        for (int i = 0; i < studentFile.size(); i++) { //for every line...
+            if (studentFile.get(i).contains(" {")) { //find the header
+                String[] str = studentFile.get(i).replace(" {", "").split(", "); // get the first and last names
                 String lastName = str[0];
                 String firstName = str[1];
 
-                Student student = new Student(lastName, firstName);
-                i++;
-
-                System.out.println(student.getName() + ": ");
+                Student student = new Student(lastName, firstName); //and turn em into a student
+                i++; //next line
+                if (displayGrades) {
+                    System.out.println();
+                }
+                System.out.println(student.getName());
                 int f = 0;
                 while (true) {
-                    if (studentFile.get(i).contains("}")) {
+                    if (studentFile.get(i).contains("}")) { //check if datablock has ended
                         break;
                     }
-                    String[] data = studentFile.get(i).split("; ");
-                    student.subjects.add(new Subject(data[0]));
-                    student.subjects.get(f).grade = Double.parseDouble(data[1]);
-                    System.out.print(student.subjects.get(f).getName() + ": ");
-                    System.out.print(student.subjects.get(f).grade);
-                    if (student.subjects.get(f).grade < 75) {
-                        System.out.println(" FAILED");
-                    } else {
-                        System.out.println(" PASSED");
+                    String[] data = studentFile.get(i).split("; "); //divide the line by the ;
+                    student.subjects.add(new Subject(data[0])); //first one's always the subject name
+                    student.subjects.get(f).grade = Double.parseDouble(data[1]); //and the second's the grade
+                    if (displayGrades) { //if displaying grades
+                        System.out.print(student.subjects.get(f).getName() + ": "); //print em out like this
+                        System.out.print(student.subjects.get(f).grade);
+                        if (student.subjects.get(f).grade < 75) { //output if failed or passed also
+                            System.out.println(" (FAILED)");
+                        } else {
+                            System.out.println(" (PASSED)");
+                        }
                     }
-                    i++;
-                    f++;
+                    i++; //next line in general
+                    f++; //next line in the datablock
+
 
 
                 }
-                students.add(student);
+                students.add(student); //add the student to the list
 
             }
         }
     }
     public void enterGrade(Scanner sc, SubjectManager sm) {
 
-        initGrades();
+        initGrades(false);
         ArrayList<String> storedGrades = new ArrayList<>();
 
         Student chosenStudent = null;
@@ -91,8 +97,6 @@ public class GradeManager {
                     break;
                 }
             }
-
-            String status = grade >= 75 ? "Pass" : "Fail";
             total += grade;
             count++;
 

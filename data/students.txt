@@ -1,16 +1,24 @@
 Gabrinao, Redd {
-Mathematics in Modern World; 90.0
-Systems Administration and Maintenance; 34.0
-}
-
-Aranzaso, Cherizze {
 Mathematics in Modern World; 98.0
 Computer Programming 2; 98.0
 Systems Administration and Maintenance; 98.0
-Art Appreciation; 58.0
-Ethics; 58.0
-Science, Technology, and Society; 5.0
-National Service Training Program 2; 56.0
-Discrete Structures 1 (Discrete Mathematics); 56.0
-Physical Education; 56.0
+Art Appreciation; 98.0
+Ethics; 98.0
+Science, Technology, and Society; 98.0
+National Service Training Program 2; 98.0
+Discrete Structures 1 (Discrete Mathematics); 8.0
+Physical Education; 98.0
+totally real; 98.0
+}
+
+Aranzaso, Cherizze {
+Mathematics in Modern World; 76.0
+Computer Programming 2; 76.0
+Systems Administration and Maintenance; 76.0
+Art Appreciation; 76.0
+Ethics; 76.0
+Science, Technology, and Society; 76.0
+National Service Training Program 2; 76.0
+Discrete Structures 1 (Discrete Mathematics); 76.0
+Physical Education; 76.0
 }
